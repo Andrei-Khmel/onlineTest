@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
-    <title th:text="'Вопрос ' +  ${questionObj.getCurrentQuestionNumber() + 1}"/>
+    <title th:text="${questionObj.getIdCode()}"/>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -16,35 +17,27 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
             crossorigin="anonymous"></script>
+
 </head>
 <body>
 
 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
     <div class="col-md-5 p-lg-5 mx-auto my-5">
 
-        <form>
-            <p class="lead font-weight-light" th:text="'Вопрос № ' + ${questionObj.getCurrentQuestionNumber()+1}"></p>
-            <p class="lead font-weight-normal"
-               th:text="${questionObj.questions[questionObj.getCurrentQuestionNumber()]}"></p><br>
+        <p class="lead font-weight-normal" th:text="'Введенный вами код: ' + ${questionObj.idCode}"></p>
+        <p class="lead font-weight-normal"> Не зарегистрирован в базе данных участников опроса. Пожалуйста, введите код правильно, или получите его у вашего преподавателя. </p>
+        <a class="btn btn-outline-secondary" href="/identification">вернуться назад</a>
 
-            <a class="btn btn-outline-danger" href="/questionNoProcessing"> НЕТ </a>
-            <a class="btn btn-outline-success" href="/questionYesProcessing"> ДА </a>
-        </form>
     </div>
     <div class="product-device shadow-sm d-none d-md-block"></div>
     <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
 </div>
-
-<p th:text="'id код..........  : ' + ${questionObj.getIdCode()}"/>
-sessionStore result.... :<p id="result"></p>
+<p th:text="'id код: ' + ${questionObj.getIdCode()}"/>
 
 <script th:inline="javascript">
-    document.getElementById("result").innerHTML = sessionStorage.getItem("idCode");
-
     var name = [[${questionObj.getIdCode()}]];
     sessionStorage.setItem('idCode', JSON.stringify(name));
 </script>
-
 
 </body>
 </html>
