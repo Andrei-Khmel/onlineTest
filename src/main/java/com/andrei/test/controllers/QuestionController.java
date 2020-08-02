@@ -80,7 +80,8 @@ public class QuestionController {
             questionObj.setCurrentQuestionNumber(questionObj.getCurrentQuestionNumber() + 1);
             return "question";
         } else {
-            System.out.println(PsychotypesCalqulator.calqulatePsychotypes(questionObj.results));
+            System.out.println(PsychotypesCalqulator.calqulatePsychotypes(questionObj.results, questionObj.idCode));
+//            System.out.println(PsychotypesCalqulator.calqulatePsychotypes(questionObj.results));
 //            saveResultsToFile(){};
             return "goodbyeForm";
         }
@@ -106,7 +107,8 @@ public class QuestionController {
             questionObj.setCurrentQuestionNumber(questionObj.getCurrentQuestionNumber() + 1);
             return "question";
         } else {
-            System.out.println(PsychotypesCalqulator.calqulatePsychotypes(questionObj.results));
+             System.out.println(PsychotypesCalqulator.calqulatePsychotypes(questionObj.results, questionObj.idCode));
+//            System.out.println(PsychotypesCalqulator.calqulatePsychotypes(questionObj.results));
 //            saveResultsToFile(){};
             return "goodbyeForm";
         }
